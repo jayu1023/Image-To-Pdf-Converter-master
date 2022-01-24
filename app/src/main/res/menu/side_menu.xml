@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/side_home"
+            android:icon="@drawable/ic_edit"
+            android:title="Home" />
+        <item
+            android:id="@+id/side_search"
+            android:icon="@drawable/ic_edit"
+            android:title="Search" />
+        <item
+            android:id="@+id/side_store"
+            android:icon="@drawable/ic_edit"
+            android:title="Store" />
+    </group>
+
+
+    <group android:checkableBehavior="single">
+        <item android:title="Profile">
+            <menu>
+                <item
+                    android:id="@+id/side_login"
+                    android:icon="@drawable/ic_edit"
+                    android:title="Login" />
+                <item
+                    android:id="@+id/side_profile"
+                    android:icon="@drawable/ic_edit"
+                    android:title="Profile" />
+                <item
+                    android:id="@+id/side_logout"
+                    android:icon="@drawable/ic_edit"
+                    android:title="Logut" />
+            </menu>
+        </item>
+    </group>
+
+    <!--<item android:title="Communication">
+        <menu>
+            <item
+                android:id="@+id/side_like"
+                android:icon="@drawable/ic_edit"
+                android:title="Like" />
+            <item
+                android:id="@+id/side_rate"
+                android:icon="@drawable/ic_edit"
+                android:title="Rate" />
+        </menu>
+    </item>-->
+</menu>

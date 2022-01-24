@@ -1,0 +1,126 @@
+<!--<resources xmlns:tools="http://schemas.android.com/tools">-->
+<!--    &lt;!&ndash; Base application theme. &ndash;&gt;-->
+<!--    <style name="Theme.ImageToPdfConvert" parent="Theme.MaterialComponents.Light">-->
+<!--        &lt;!&ndash; Primary brand color. &ndash;&gt;-->
+<!--        <item name="colorPrimary">@color/purple_500</item>-->
+<!--        <item name="colorPrimaryVariant">@color/purple_700</item>-->
+<!--        <item name="colorOnPrimary">@color/white</item>-->
+<!--        &lt;!&ndash; colorPrimaryDark is used for the status bar &ndash;&gt;-->
+<!--        <item name="colorPrimaryDark">@color/colorPrimary</item>-->
+<!--        &lt;!&ndash; colorAccent is used as the default value for colorControlActivated, &ndash;&gt;-->
+<!--        <item name="colorAccent">@color/colorAccent</item>-->
+<!--        &lt;!&ndash; Secondary brand color. &ndash;&gt;-->
+<!--        <item name="colorSecondary">@color/teal_200</item>-->
+<!--        <item name="colorSecondaryVariant">@color/teal_700</item>-->
+<!--        <item name="colorOnSecondary">@color/black</item>-->
+<!--        &lt;!&ndash; Status bar color. &ndash;&gt;-->
+<!--        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>-->
+<!--        &lt;!&ndash; Customize your theme here. &ndash;&gt;-->
+<!--    </style>-->
+
+<!--    <style name="Theme.ImageToPdfConvert.NoActionBar">-->
+<!--        <item name="windowActionBar">false</item>-->
+<!--        <item name="windowNoTitle">true</item>-->
+<!--        &lt;!&ndash; colorPrimaryDark is used for the status bar &ndash;&gt;-->
+<!--        <item name="colorPrimaryDark">@color/colorPrimary</item>-->
+<!--        &lt;!&ndash; colorAccent is used as the default value for colorControlActivated, &ndash;&gt;-->
+<!--        <item name="colorAccent">@color/colorAccent</item>-->
+<!--        <item name="colorPrimary">@color/purple_500</item>-->
+<!--        <item name="colorPrimaryVariant">@color/purple_700</item>-->
+<!--        <item name="colorOnPrimary">@color/white</item>-->
+<!--        &lt;!&ndash; Secondary brand color. &ndash;&gt;-->
+<!--        <item name="colorSecondary">@color/teal_200</item>-->
+<!--        <item name="colorSecondaryVariant">@color/teal_700</item>-->
+<!--        <item name="colorOnSecondary">@color/black</item>-->
+<!--        &lt;!&ndash; Status bar color. &ndash;&gt;-->
+<!--        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>-->
+<!--        <item name="fontFamily">@font/poppins_medium</item>-->
+<!--    </style>-->
+
+<!--    <style name="BrandedSwitch.control" parent="Theme.MaterialComponents.Light">-->
+<!--        &lt;!&ndash; active thumb & track color (30% transparency) &ndash;&gt;-->
+<!--        <item name="android:layout_width">@dimen/_50sdp</item>-->
+<!--        <item name="colorControlActivated">@color/teal_700</item>-->
+<!--        <item name="colorSwitchThumbNormal">@color/teal_200</item>-->
+<!--        <item name="android:colorForeground">@color/teal_200</item>-->
+<!--    </style>-->
+
+<!--    <style name="SpinnerTheme" parent="android:Widget.Spinner">-->
+<!--        <item name="android:background">@drawable/bg_spinner</item>-->
+<!--    </style>-->
+
+<!--</resources>-->
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.ImageToPdfConvert" parent="Theme.MaterialComponents.Light">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/purple_500</item>
+
+
+        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- colorPrimaryDark is used for the status bar -->
+        <item name="colorPrimaryDark">@color/colorPrimary</item>
+        <!-- colorAccent is used as the default value for colorControlActivated, -->
+        <item name="colorAccent">@color/colorAccent</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/teal_200</item>
+        <item name="colorSecondaryVariant">@color/teal_700</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+    </style>
+
+
+    <style name="Theme.ImageToPdfConvert.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <!-- colorPrimaryDark is used for the status bar -->
+        <item name="colorPrimaryDark">@color/colorPrimary</item>
+        <!-- colorAccent is used as the default value for colorControlActivated, -->
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorPrimary">@color/purple_500</item>
+        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/teal_200</item>
+        <item name="colorSecondaryVariant">@color/teal_700</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <item name="fontFamily">@font/poppins_medium</item>
+    </style>
+
+    <style name="BrandedSwitch.control" parent="Theme.MaterialComponents.Light">
+        <!-- active thumb & track color (30% transparency) -->
+        <item name="android:layout_width">@dimen/_50sdp</item>
+        <item name="colorControlActivated">@color/teal_700</item>
+        <item name="colorSwitchThumbNormal">@color/teal_200</item>
+        <item name="android:colorForeground">@color/teal_200</item>
+    </style>
+
+    <!-- textappearnace of caption -->
+    <style name="TextAppearance.AppCompat" parent="TextAppearance.MaterialComponents.Tooltip">
+        <item name="fontFamily">@font/poppins_medium</item>
+        <item name="android:fontFamily">@font/poppins_medium</item>
+        <item name="color">@color/colorPrimary</item>
+        <item name="android:color">@color/colorPrimary</item>
+    </style>
+
+
+    <style name="SpinnerTheme" parent="android:Widget.Spinner">
+        <item name="android:background">@drawable/bg_spinner</item>
+    </style>
+
+
+
+
+    <style name="mytextfield" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="colorPrimary">@color/teal_200</item>
+    </style>
+
+
+
+
+</resources>
