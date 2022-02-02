@@ -2,23 +2,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
-
-    <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/side_home"
-            android:icon="@drawable/ic_edit"
-            android:title="Home" />
-        <item
-            android:id="@+id/side_search"
-            android:icon="@drawable/ic_edit"
-            android:title="Search" />
-        <item
-            android:id="@+id/side_store"
-            android:icon="@drawable/ic_edit"
-            android:title="Store" />
-    </group>
-
-
     <group android:checkableBehavior="single">
         <item android:title="Profile">
             <menu>
@@ -37,6 +20,25 @@
             </menu>
         </item>
     </group>
+    <group android:checkableBehavior="single"
+        >
+
+        <item
+            android:id="@+id/side_home"
+            android:icon="@drawable/ic_edit"
+            android:title="Image TO Pdf" />
+        <item
+            android:id="@+id/side_search"
+            android:icon="@drawable/ic_edit"
+            android:title="Text To Pdf" />
+        <item
+            android:id="@+id/side_store"
+            android:icon="@drawable/ic_edit"
+            android:title="Backup" />
+    </group>
+
+
+
 
     <!--<item android:title="Communication">
         <menu>

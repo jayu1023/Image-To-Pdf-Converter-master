@@ -16,9 +16,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ImageToPdfConvert.NoActionBar"
         android:usesCleartextTraffic="true">
-
-        <activity android:name=".activity.Text_to_pdf_activity"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity.web_to_pdf"
+            android:exported="true" />
+        <activity
+            android:name=".activity.Text_to_pdf_activity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.GeneratedPdfActivity"
             android:screenOrientation="portrait" />

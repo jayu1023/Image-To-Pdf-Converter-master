@@ -103,8 +103,8 @@
                     app:boxStrokeErrorColor="@android:color/holo_red_dark"
                     app:counterEnabled="true"
                     app:helperTextEnabled="true"
-                    app:hintAnimationEnabled="true"
-                    app:hintTextAppearance="@style/TextAppearance.App.Caption">
+                    app:hintAnimationEnabled="true">
+<!--                    app:hintTextAppearance="@style/TextAppearance.App.Caption">-->
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/EditTextofText"
