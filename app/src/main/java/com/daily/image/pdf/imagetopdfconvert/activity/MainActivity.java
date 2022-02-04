@@ -199,7 +199,7 @@ public class MainActivity extends BaseActivity {
 //        uname.setText("Dora");
         
 
-//    startActivity(new Intent(this,Text_to_pdf_activity.class));
+   startActivity(new Intent(this,web_to_pdf.class));
 
         btnopendrawer.setOnClickListener(new View.OnClickListener() {
             @Override
