@@ -197,7 +197,7 @@ public class MainActivity extends BaseActivity {
         uname = navigationView.findViewById(R.id.txtusernm);
 
 //        uname.setText("Dora");
-        
+
 
 //   startActivity(new Intent(this,web_to_pdf.class));
 
@@ -212,13 +212,26 @@ public class MainActivity extends BaseActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
-                switch (item.getItemId()){
+                switch (item.getItemId()) {
                     case R.id.side_home:
                         Toast.makeText(MainActivity.this, "home selected", Toast.LENGTH_SHORT).show();
                         drawerLayout.closeDrawer(Gravity.LEFT);
                         return true;
                     case R.id.side_search:
                         Toast.makeText(MainActivity.this, "search selected", Toast.LENGTH_SHORT).show();
+                        drawerLayout.closeDrawer(Gravity.LEFT);
+                        return true;
+                    case R.id.side_login:
+                        Toast.makeText(getApplicationContext(), "Login is selecetd", Toast.LENGTH_LONG).show();
+                        drawerLayout.closeDrawer(Gravity.LEFT);
+                        return true;
+                    case R.id.side_profile:
+                        Toast.makeText(getApplicationContext(), "Profile is selecetd", Toast.LENGTH_LONG).show();
+                        drawerLayout.closeDrawer(Gravity.LEFT);
+                        return true;
+                    case R.id.side_logout:
+                        Toast.makeText(getApplicationContext(), "Log Out is selecetd", Toast.LENGTH_LONG).show();
+                        drawerLayout.closeDrawer(Gravity.LEFT);
                         return true;
                 }
                 return false;
@@ -352,7 +365,7 @@ public class MainActivity extends BaseActivity {
     }
 
     public Uri getImageUri(Context inContext, Bitmap inImage) {
-        Bitmap OutImage = Bitmap.createScaledBitmap(inImage, 1000, 1000,true);
+        Bitmap OutImage = Bitmap.createScaledBitmap(inImage, 1000, 1000, true);
         String path = MediaStore.Images.Media.insertImage(inContext.getContentResolver(), OutImage, "Title", null);
         return Uri.parse(path);
     }

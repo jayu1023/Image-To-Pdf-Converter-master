@@ -30,8 +30,8 @@
             <ImageView
                 android:id="@+id/btnopendrawer"
                 android:layout_width="40dp"
-                android:layout_marginLeft="15dp"
                 android:layout_height="match_parent"
+                android:layout_marginLeft="15dp"
                 app:srcCompat="@drawable/ic_open_drawer"
                 app:tint="@color/white" />
 
