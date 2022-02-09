@@ -9,12 +9,14 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
 import android.print.PrintAttributes;
 import android.print.PrintDocumentAdapter;
 
 import android.print.PrintJob;
 import android.print.PrintManager;
 import android.view.View;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
@@ -40,7 +42,11 @@ public class web_to_pdf extends AppCompatActivity {
         super.onCreate(savedInstanceState);
        myBinding= DataBindingUtil.setContentView(web_to_pdf.this,R.layout.activity_web_to_pdf);
 
-      myBinding.  webview.setWebViewClient(new WebViewClient()
+        myBinding.llShare.setVisibility(View.GONE);
+        myBinding.llOpenWith.setVisibility(View.GONE);
+
+
+        myBinding.webview.setWebViewClient(new WebViewClient()
 
         {
 
@@ -57,26 +63,112 @@ public class web_to_pdf extends AppCompatActivity {
             }
 
         });
-       myBinding.btnConvertWebToPdf.setOnClickListener(new View.OnClickListener() {
+
+      myBinding.BtnRefreshLink.setOnClickListener(new View.OnClickListener() {
+          @Override
+          public void onClick(View view) {
+              if(myBinding.EditTextofweb.getText().toString().isEmpty())
+              {
+                  Toasty.error(getApplicationContext(),"fieldd is empty").show();
+
+              }else
+              {
+                  if(myBinding.webview!=null)
+                  {
+                      if (Build.VERSION.SDK_INT >= 19) {
+                          myBinding.webview.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
+                      }
+                      myBinding.webview.clearFormData();
+                      myBinding.webview.loadUrl(myBinding.EditTextofweb.getText().toString());
+                  }else
+                  {
+                      myBinding.webview.loadUrl(myBinding.EditTextofweb.getText().toString());
+
+                  }
+
+              }
+          }
+      });
+
+      myBinding.imgFinalClose.setOnClickListener(new View.OnClickListener() {
+          @Override
+          public void onClick(View view) {
+              if(myBinding.llFinal.getVisibility()==View.VISIBLE)
+              {
+                  myBinding.llFinal.setVisibility(View.GONE);
+                  myBinding.maincode.setVisibility(View.VISIBLE);
+              }else
+              {
+
+              }
+          }
+      });
+
+
+    myBinding.imgProcessClose.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            if(myBinding.llprocess.getVisibility()==View.VISIBLE)
+            {
+                myBinding.llprocess.setVisibility(View.GONE);
+                myBinding.maincode.setVisibility(View.VISIBLE);
+            }else
+            {
+
+            }
+        }
+    });
+
+
+    myBinding.imgback.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            finish();
+        }
+    });
+
+        myBinding.btnConvertWebToPdf.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
                     if(myBinding.EditTextofweb.getText().toString().isEmpty()){
                         Toasty.error(getApplicationContext(),"fieldd is empty").show();
                     }else
                     {
-                        myBinding.webview.loadUrl(myBinding.EditTextofweb.getText().toString());
 
+                        if (Build.VERSION.SDK_INT >= 19) {
+                            myBinding.webview.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
+                        }
+                        myBinding.webview.loadUrl(myBinding.EditTextofweb.getText().toString());
 
 //                        myBinding.EditTextofweb.setVisibility(View.GONE);
                         if(printWeb!=null)
 
                         {
 
+
                             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
 
                                 // Calling createWebPrintJob()
 
-                                PrintTheWebPage(printWeb);
+                                myBinding.llprocess.setVisibility(View.VISIBLE);
+                                myBinding.maincode.setVisibility(View.GONE);
+
+                               Handler mHandler = new Handler();
+                              Runnable  mRunnable = new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        myBinding.llprocess.setVisibility(View.GONE);
+                                       myBinding.llFinal.setVisibility(View.VISIBLE);
+                                        PrintTheWebPage(printWeb);
+                                    }
+                                };
+
+                                // its trigger runnable after 4000 millisecond.
+                                mHandler.postDelayed(mRunnable,4000);
+
+
+
+
 
                             }else
 
