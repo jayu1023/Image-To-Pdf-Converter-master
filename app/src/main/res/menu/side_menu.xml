@@ -24,15 +24,19 @@
         >
 
         <item
-            android:id="@+id/side_home"
+            android:id="@+id/side_imagetopdf"
             android:icon="@drawable/ic_edit"
             android:title="Image TO Pdf" />
         <item
-            android:id="@+id/side_search"
+            android:id="@+id/side_texttopdf"
             android:icon="@drawable/ic_edit"
             android:title="Text To Pdf" />
         <item
             android:id="@+id/side_backup"
+            android:icon="@drawable/ic_edit"
+            android:title="Backup" />
+        <item
+            android:id="@+id/side_linktopdf"
             android:icon="@drawable/ic_edit"
             android:title="Backup" />
     </group>

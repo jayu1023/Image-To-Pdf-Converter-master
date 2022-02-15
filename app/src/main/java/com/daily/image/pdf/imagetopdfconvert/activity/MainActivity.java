@@ -213,14 +213,7 @@ public class MainActivity extends BaseActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
                 switch (item.getItemId()) {
-                    case R.id.side_home:
-                        Toast.makeText(MainActivity.this, "home selected", Toast.LENGTH_SHORT).show();
-                        drawerLayout.closeDrawer(Gravity.LEFT);
-                        return true;
-                    case R.id.side_search:
-                        Toast.makeText(MainActivity.this, "search selected", Toast.LENGTH_SHORT).show();
-                        drawerLayout.closeDrawer(Gravity.LEFT);
-                        return true;
+
                     case R.id.side_login:
                         Toast.makeText(getApplicationContext(), "Login is selecetd", Toast.LENGTH_LONG).show();
                         drawerLayout.closeDrawer(Gravity.LEFT);
@@ -231,6 +224,18 @@ public class MainActivity extends BaseActivity {
                         return true;
                     case R.id.side_logout:
                         Toast.makeText(getApplicationContext(), "Log Out is selecetd", Toast.LENGTH_LONG).show();
+                        drawerLayout.closeDrawer(Gravity.LEFT);
+                        return true;
+
+                    case R.id.side_texttopdf:
+                        startActivity(new Intent(getApplicationContext(),Text_to_pdf_activity.class));
+                        drawerLayout.closeDrawer(Gravity.LEFT);
+                        return true;
+
+
+
+                    case R.id.side_linktopdf:
+                        startActivity(new Intent(getApplicationContext(),web_to_pdf.class));
                         drawerLayout.closeDrawer(Gravity.LEFT);
                         return true;
                 }
