@@ -25,7 +25,7 @@
                 android:background="@color/purple_700">
 
                 <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/imgback"
+                    android:id="@+id/imgbackarrow"
                     android:layout_width="@dimen/_60sdp"
                     android:layout_height="match_parent"
                     android:layout_centerVertical="true"
@@ -36,7 +36,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_toRightOf="@+id/imgback"
+                    android:layout_toRightOf="@+id/imgbackarrow"
                     android:fontFamily="@font/poppins_medium"
                     android:gravity="center_vertical"
                     android:paddingLeft="@dimen/_15sdp"

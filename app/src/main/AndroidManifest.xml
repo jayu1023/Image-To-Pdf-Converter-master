@@ -18,6 +18,9 @@
         android:theme="@style/Theme.ImageToPdfConvert.NoActionBar"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".activity.MainActivity"
+            android:exported="true" />
+        <activity
             android:name=".activity.ProfileActivity"
             android:exported="true" />
         <activity
@@ -46,7 +49,7 @@
             android:name=".activity.AlbumActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activity.MainActivity"
+            android:name=".activity.Splash_activity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -15,6 +15,7 @@ import android.print.PrintDocumentAdapter;
 
 import android.print.PrintJob;
 import android.print.PrintManager;
+import android.util.Log;
 import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
@@ -120,12 +121,12 @@ public class web_to_pdf extends AppCompatActivity {
     });
 
 
-    myBinding.imgback.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            finish();
-        }
-    });
+   myBinding.imgbackarrow.setOnClickListener(new View.OnClickListener() {
+       @Override
+       public void onClick(View view) {
+           finish();
+       }
+   });
 
         myBinding.btnConvertWebToPdf.setOnClickListener(new View.OnClickListener() {
            @Override

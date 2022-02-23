@@ -24,7 +24,7 @@
             android:layout_width="@dimen/_100sdp"
             android:layout_height="@dimen/_100sdp"
             android:layout_centerVertical="true"
-            android:srccompat="@drawable/ic_folder" />
+            android:src="@drawable/ic_folder" />
 
         <TextView
             android:id="@+id/username"
@@ -70,7 +70,7 @@
             <ImageView
                 android:layout_width="@dimen/_30sdp"
                 android:layout_height="@dimen/_30sdp"
-                android:srccompat="@drawable/ic_folder"
+                android:src="@drawable/ic_folder"
                 android:layout_centerHorizontal="true"/>
             <TextView
                 android:layout_width="wrap_content"
@@ -104,7 +104,7 @@
                 <ImageView
                     android:layout_width="@dimen/_30sdp"
                     android:layout_height="@dimen/_30sdp"
-                    android:srccompat="@drawable/ic_folder"
+                    android:src="@drawable/ic_folder"
                     android:layout_centerHorizontal="true"/>
                 <TextView
                     android:layout_width="wrap_content"

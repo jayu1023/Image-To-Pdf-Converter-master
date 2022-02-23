@@ -5,18 +5,12 @@
     <group android:checkableBehavior="single">
         <item android:title="Profile">
             <menu>
-                <item
-                    android:id="@+id/side_login"
-                    android:icon="@drawable/ic_edit"
-                    android:title="Login" />
+
                 <item
                     android:id="@+id/side_profile"
                     android:icon="@drawable/ic_edit"
                     android:title="Profile" />
-                <item
-                    android:id="@+id/side_logout"
-                    android:icon="@drawable/ic_edit"
-                    android:title="Logut" />
+
             </menu>
         </item>
     </group>
@@ -32,13 +26,14 @@
             android:icon="@drawable/ic_edit"
             android:title="Text To Pdf" />
         <item
-            android:id="@+id/side_backup"
-            android:icon="@drawable/ic_edit"
-            android:title="Backup" />
-        <item
             android:id="@+id/side_linktopdf"
             android:icon="@drawable/ic_edit"
-            android:title="Backup" />
+            android:title="link to pdf" />
+        <item
+            android:id="@+id/side_logout"
+            android:icon="@drawable/ic_edit"
+            android:title="Logut" />
+
     </group>
 
 

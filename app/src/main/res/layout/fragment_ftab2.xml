@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    tools:context=".fragment.SignIn">
+
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:gravity="center"
+       android:orientation="vertical"
+       android:layout_height="match_parent">
+       <com.google.android.material.textfield.TextInputLayout
+           android:layout_width="match_parent"
+           android:id="@+id/emailtextinput"
+           android:layout_marginLeft="@dimen/_15sdp"
+           android:hint="Enter YOur email"
+
+           android:layout_marginRight="@dimen/_15sdp"
+           android:layout_height="wrap_content">
+           <com.google.android.material.textfield.TextInputEditText
+               android:layout_width="match_parent"
+               android:id="@+id/emailtextfield"
+               android:textColor="@color/black"
+               android:fontFamily="@font/poppins_medium"
+               android:layout_height="wrap_content"/>
+       </com.google.android.material.textfield.TextInputLayout>
+       <com.google.android.material.textfield.TextInputLayout
+           android:layout_width="match_parent"
+           android:layout_marginTop="@dimen/_5sdp"
+           android:id="@+id/emailpasswordinput"
+           android:layout_marginLeft="@dimen/_15sdp"
+           android:hint="Enter Your password"
+
+           android:layout_marginRight="@dimen/_15sdp"
+           android:layout_height="wrap_content">
+           <com.google.android.material.textfield.TextInputEditText
+               android:layout_width="match_parent"
+               android:id="@+id/passwordtextfield"
+               android:textColor="@color/black"
+               android:fontFamily="@font/poppins_medium"
+               android:layout_height="wrap_content"/>
+       </com.google.android.material.textfield.TextInputLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnsignin"
+        android:clickable="true"
+        android:shadowColor="@color/colorPrimary"
+        android:shadowRadius="10.0"
+        android:shadowDx="5.0"
+        android:shadowDy="5.0"
+        android:elevation="@dimen/_5sdp"
+        android:layout_marginTop="@dimen/_15sdp"
+      android:paddingLeft="@dimen/_15sdp"
+        android:paddingRight="@dimen/_15sdp"
+        android:text="Sign in"
+        android:textSize="@dimen/_20sdp"
+        android:background="@drawable/btn_bg"/>
+
+       <TextView
+           android:layout_width="wrap_content"
+           android:id="@+id/forgotpassword"
+           android:layout_marginTop="@dimen/_5sdp"
+           android:clickable="true"
+           android:layout_height="wrap_content"
+           android:textColor="@color/black"
+           android:text="Forgot password?"/>
+   </LinearLayout>
+
+</FrameLayout>

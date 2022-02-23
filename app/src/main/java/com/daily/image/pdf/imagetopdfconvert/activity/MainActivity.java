@@ -199,7 +199,7 @@ public class MainActivity extends BaseActivity {
 //        uname.setText("Dora");
 
 
-//   startActivity(new Intent(this,web_to_pdf.class));
+//   startActivity(new Intent(this,web_to_pdf.cl
 
         btnopendrawer.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -214,12 +214,10 @@ public class MainActivity extends BaseActivity {
 
                 switch (item.getItemId()) {
 
-                    case R.id.side_login:
-                        Toast.makeText(getApplicationContext(), "Login is selecetd", Toast.LENGTH_LONG).show();
-                        drawerLayout.closeDrawer(Gravity.LEFT);
-                        return true;
+
                     case R.id.side_profile:
-                        Toast.makeText(getApplicationContext(), "Profile is selecetd", Toast.LENGTH_LONG).show();
+//                        Toast.makeText(getApplicationContext(), "Profile is selecetd", Toast.LENGTH_LONG).show();
+                        startActivity(new Intent(getApplicationContext(),ProfileActivity.class));
                         drawerLayout.closeDrawer(Gravity.LEFT);
                         return true;
                     case R.id.side_logout:

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "674489196190",
+    "project_id": "pdfzone-fff8a",
+    "storage_bucket": "pdfzone-fff8a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:674489196190:android:87b910ecfa1c7e973e658f",
+        "android_client_info": {
+          "package_name": "com.daily.image.pdf.imagetopdfconvert"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "674489196190-f4a9p3r7di7va4pplesumt3po9pomaco.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDqxc5Hrwmr3nbA9XjYvfFSMOUW4H42V7A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "674489196190-f4a9p3r7di7va4pplesumt3po9pomaco.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
