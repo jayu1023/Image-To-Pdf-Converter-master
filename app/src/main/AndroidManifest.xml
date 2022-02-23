@@ -18,6 +18,9 @@
         android:theme="@style/Theme.ImageToPdfConvert.NoActionBar"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".activity.ProfileActivity"
+            android:exported="true" />
+        <activity
             android:name=".activity.loginscreen"
             android:exported="true" />
         <activity
