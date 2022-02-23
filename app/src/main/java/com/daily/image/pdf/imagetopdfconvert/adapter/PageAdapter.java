@@ -1,5 +1,7 @@
 package com.daily.image.pdf.imagetopdfconvert.adapter;
 
+import android.content.Context;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -10,10 +12,14 @@ import com.daily.image.pdf.imagetopdfconvert.fragment.SignIn;
 import com.daily.image.pdf.imagetopdfconvert.fragment.SignUp;
 
 public class PageAdapter extends FragmentPagerAdapter {
+Context mycon;
+    public PageAdapter(@NonNull FragmentManager fm,Context context) {
 
-    public PageAdapter(@NonNull FragmentManager fm) {
+
         super(fm);
+        this.mycon=context;
     }
+
 
     @NonNull
     @Override
@@ -28,7 +34,7 @@ public class PageAdapter extends FragmentPagerAdapter {
 
         if(position==1)
         {
-            fragment =new SignIn();
+            fragment =new SignIn(mycon);
         }
 
         return fragment;

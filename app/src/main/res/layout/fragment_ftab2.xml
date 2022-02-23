@@ -22,37 +22,26 @@
 
        android:orientation="vertical"
        android:layout_height="match_parent">
-       <com.google.android.material.textfield.TextInputLayout
-           android:layout_width="match_parent"
-           android:id="@+id/emailtextinput"
-           android:layout_marginLeft="@dimen/_15sdp"
-           android:hint="Enter YOur email"
+        <com.google.android.material.textfield.TextInputEditText
+            android:hint="Enter Email"
+            android:layout_marginLeft="@dimen/_15sdp"
+            android:layout_marginRight="@dimen/_15sdp"
+            android:padding="@dimen/_10sdp"
+            android:id="@+id/emailtextfield"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/editview_back"/>
 
-           android:layout_marginRight="@dimen/_15sdp"
-           android:layout_height="wrap_content">
-           <com.google.android.material.textfield.TextInputEditText
-               android:layout_width="match_parent"
-               android:id="@+id/emailtextfield"
-               android:textColor="@color/black"
-               android:fontFamily="@font/poppins_medium"
-               android:layout_height="wrap_content"/>
-       </com.google.android.material.textfield.TextInputLayout>
-       <com.google.android.material.textfield.TextInputLayout
-           android:layout_width="match_parent"
-           android:layout_marginTop="@dimen/_5sdp"
-           android:id="@+id/emailpasswordinput"
-           android:layout_marginLeft="@dimen/_15sdp"
-           android:hint="Enter Your password"
-
-           android:layout_marginRight="@dimen/_15sdp"
-           android:layout_height="wrap_content">
-           <com.google.android.material.textfield.TextInputEditText
-               android:layout_width="match_parent"
-               android:id="@+id/passwordtextfield"
-               android:textColor="@color/black"
-               android:fontFamily="@font/poppins_medium"
-               android:layout_height="wrap_content"/>
-       </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputEditText
+            android:hint="Enter password"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:layout_marginLeft="@dimen/_15sdp"
+            android:layout_marginRight="@dimen/_15sdp"
+            android:padding="@dimen/_10sdp"
+            android:id="@+id/passwordtextfield"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/editview_back"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

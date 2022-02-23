@@ -26,6 +26,9 @@ public class SignIn extends Fragment {
     Context c1;
     TextInputLayout emailnputlayout,passwordlayout;
     TextInputEditText emailtxtfield,passwordtxtfield;
+    public SignIn(Context c2){
+        this.c1=c2;
+    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -45,6 +48,7 @@ public class SignIn extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         emailtxtfield=view.findViewById(R.id.emailtextfield);
+        passwordtxtfield=view.findViewById(R.id.passwordtextfield);
         view.findViewById(R.id.btnsignin).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -28,7 +28,7 @@ public class loginscreen extends AppCompatActivity {
 //        tabItem2 = findViewById(R.id.tab2);
         viewPager = findViewById(R.id.vpager);
 
-        PageAdapter pageAdapter = new PageAdapter(getSupportFragmentManager());
+        PageAdapter pageAdapter = new PageAdapter(getSupportFragmentManager(),getApplicationContext());
         viewPager.setAdapter(pageAdapter);
 
         tabLayout.setupWithViewPager(viewPager);
