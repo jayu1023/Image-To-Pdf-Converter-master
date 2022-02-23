@@ -4,11 +4,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
-    tools:context=".fragment.SignIn">
 
-   <LinearLayout
+    tools:context=".fragment.SignIn">
+<RelativeLayout
+    android:layout_width="wrap_content"
+    android:gravity="center"
+    android:layout_marginTop="@dimen/_80sdp"
+    android:background="@drawable/ic_pdf"
+    android:layout_gravity="center_horizontal"
+    android:layout_height="wrap_content"/>
+  <RelativeLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent">
+    <LinearLayout
        android:layout_width="match_parent"
        android:gravity="center"
+
        android:orientation="vertical"
        android:layout_height="match_parent">
        <com.google.android.material.textfield.TextInputLayout
@@ -68,5 +79,5 @@
            android:textColor="@color/black"
            android:text="Forgot password?"/>
    </LinearLayout>
-
+  </RelativeLayout>
 </FrameLayout>
