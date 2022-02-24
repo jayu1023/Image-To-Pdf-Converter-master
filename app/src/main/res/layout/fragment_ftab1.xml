@@ -3,10 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
+    android:layout_gravity="center_horizontal"
     tools:context=".fragment.SignUp">
 
     <LinearLayout
         android:orientation="vertical"
+        android:gravity="center_horizontal"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -17,6 +20,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:hint="Enter Email"
             android:padding="@dimen/_10sdp"
+            android:id="@+id/emailtxtfld"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/editview_back"/>
@@ -28,9 +32,22 @@
         <com.google.android.material.textfield.TextInputEditText
             android:hint="password"
             android:padding="@dimen/_10sdp"
+            android:id="@+id/passwordtxtfld"
+            android:inputType="textPassword"
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/editview_back"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+          android:paddingRight="@dimen/_15sdp"
+            android:id="@+id/btnsignup"
+           android:paddingLeft="@dimen/_15sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:background="@drawable/btn_bg"
+            android:textSize="@dimen/_15sdp"
+            android:text="Sign UP"/>
 
     </LinearLayout>
 

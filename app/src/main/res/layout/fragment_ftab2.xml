@@ -3,22 +3,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_gravity="center"
+    android:layout_gravity="center_horizontal"
 
     tools:context=".fragment.SignIn">
 <RelativeLayout
     android:layout_width="wrap_content"
     android:gravity="center"
     android:layout_marginTop="@dimen/_80sdp"
-    android:background="@drawable/ic_pdf"
-    android:layout_gravity="center_horizontal"
+
+
     android:layout_height="wrap_content"/>
   <RelativeLayout
       android:layout_width="match_parent"
+android:layout_marginTop="@dimen/_50sdp"
       android:layout_height="match_parent">
     <LinearLayout
        android:layout_width="match_parent"
-       android:gravity="center"
+      android:gravity="center_horizontal"
 
        android:orientation="vertical"
        android:layout_height="match_parent">
@@ -61,9 +62,10 @@
 
        <TextView
            android:layout_width="wrap_content"
-           android:id="@+id/forgotpassword"
+           android:id="@+id/btnforgotpassword"
            android:layout_marginTop="@dimen/_5sdp"
            android:clickable="true"
+           android:textColorHighlight="@color/colorPrimary"
            android:layout_height="wrap_content"
            android:textColor="@color/black"
            android:text="Forgot password?"/>
@@ -76,6 +78,15 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:clickable="true"
+            android:layout_gravity="center"
+            android:paddingLeft="@dimen/_15sdp"
+            android:paddingRight="@dimen/_15sdp"
+            android:textSize="@dimen/_15sdp"
+            android:visibility="gone"
+            android:background="@drawable/btn_bg"
+            android:text="Resend verification"
+            android:id="@+id/btnresend"/>
    </LinearLayout>
   </RelativeLayout>
 </FrameLayout>

@@ -26,3 +26,51 @@ public class SignUp extends Fragment {
         super.onViewCreated(view, savedInstanceState);
     }
 }
+
+
+/*
+*
+*
+*   fauth.createUserWithEmailAndPassword(emailtxtfield.getText().toString(),
+                                passwordtxtfield.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if (task.isSuccessful()) {
+
+                                    currentuser = fauth.getCurrentUser();
+
+
+                                    ///
+                                    ///send verification
+                                    ///
+
+
+                                    currentuser.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            if (task.isSuccessful()) {
+                                                circularProgressIndicator.setVisibility(View.VISIBLE);
+                                                Toasty.success(c1, "Please verify your email address!!").show();
+                                                resendbutton.setVisibility(View.GONE);
+                                            } else {
+
+                                                circularProgressIndicator.setVisibility(View.GONE);
+                                                Toasty.error(c1, task.getException().toString()).show();
+                                            }
+                                        }
+                                    });
+
+                                } else {
+                                    circularProgressIndicator.setVisibility(View.GONE);
+                                    Toasty.error(c1, task.getException().toString());
+                                }
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                circularProgressIndicator.setVisibility(View.GONE);
+                                Toasty.error(c1, e.getMessage().toString()).show();
+                            }
+                        });
+*
+* */
