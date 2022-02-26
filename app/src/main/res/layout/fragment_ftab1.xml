@@ -46,9 +46,15 @@
            android:paddingLeft="@dimen/_15sdp"
             android:layout_marginTop="@dimen/_10sdp"
             android:background="@drawable/btn_bg"
-            android:textSize="@dimen/_15sdp"
+            android:textSize="@dimen/_20sdp"
             android:text="Sign UP"/>
-
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/txtloading"
+    android:layout_marginTop="@dimen/_10sdp"
+    android:visibility="gone"
+    android:text="Loading..."/>
     </LinearLayout>
 
 </FrameLayout>

@@ -17,6 +17,7 @@ import android.widget.TextView;
 import com.daily.image.pdf.imagetopdfconvert.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.progressindicator.CircularProgressIndicator;
 import com.google.android.material.textfield.TextInputEditText;
@@ -119,68 +120,118 @@ public class SignIn extends Fragment {
         view.findViewById(R.id.btnsignin).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+//                fauth.getCurrentUser().reload();
+
                 if (emailtxtfield.getText().toString().isEmpty() || passwordtxtfield.getText().toString().isEmpty()) {
                     Toasty.error(c1, "textfield is empty").show();
                 } else {
 
                     circularProgressIndicator.setVisibility(View.VISIBLE);
 
+                    try {
+
+
+
+
+                        fauth.signInWithEmailAndPassword(emailtxtfield.getText().toString(),passwordtxtfield.getText().toString()).addOnSuccessListener(
+                                new OnSuccessListener<AuthResult>() {
+                                    @Override
+                                    public void onSuccess(AuthResult authResult) {
+                                        if(authResult.getUser()!=null)
+                                        {
+                                            if(authResult.getUser().isEmailVerified())
+                                            {
+                                                circularProgressIndicator.setVisibility(View.GONE);
+
+                                                Toasty.success(c1,"succes").show();
+                                            }else{
+                                                try {
+                                                    authResult.getUser().sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                        @Override
+                                                        public void onComplete(@NonNull Task<Void> task) {
+                                                            if(task.isSuccessful())
+                                                            {   circularProgressIndicator.setVisibility(View.GONE);
+                                                                Toasty.success(c1,"link has benn sent").show();
+                                                            }else
+                                                            {   circularProgressIndicator.setVisibility(View.GONE);
+                                                                Toasty.error(c1,"erorj4ijr").show();
+                                                            }
+                                                        }
+                                                    });
+                                                }catch (Exception e){
+                                                    Toasty.error(c1,e.getMessage()).show();
+                                                }
+
+                                            }
+
+                                        }else
+                                        {
+                                            circularProgressIndicator.setVisibility(View.GONE);
+                                            Toasty.error(c1,"error").show();
+                                        }
+                                    }
+                                }
+                        );
+
+                    }catch(Exception e){
+                        Toasty.error(c1,e.getMessage()).show();
+                    }
+
+
                     ///
                     ///create user with email and password
                     ///
-                    if (FirebaseAuth.getInstance().getCurrentUser() != null) {
-                        new Handler().postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-                                if (fauth.getCurrentUser().isEmailVerified()) {
-                                    Toasty.success(c1, "succes you have login");
-                                    circularProgressIndicator.setVisibility(View.VISIBLE);
-                                } else {
-                                    fauth.getCurrentUser().sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
-                                        @Override
-                                        public void onComplete(@NonNull Task<Void> task) {
-                                            if (task.isSuccessful()) {
-                                                circularProgressIndicator.setVisibility(View.GONE);
-                                                resendbutton.setVisibility(View.VISIBLE);
-                                                Toasty.success(c1, "link sent to your email").show();
-
-                                            } else {
-                                                circularProgressIndicator.setVisibility(View.GONE);
-                                                Toasty.error(c1, task.getException().getMessage().toString()).show();
-                                            }
-                                        }
-                                    });
-                                }
-
-                            }
-                        }, 900);
-
-
-                    } else {
-                        circularProgressIndicator.setVisibility(View.VISIBLE);
-
-                        fauth.signInWithEmailAndPassword(emailtxtfield.getText().toString(),
-                                passwordtxtfield.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                if (task.isSuccessful()) {
-
-                                    currentuser = fauth.getCurrentUser();
-
-
-                                    ///
-                                    ///send verification
-
-
-
-
-                                } else {
-                                    circularProgressIndicator.setVisibility(View.GONE);
-                                    Toasty.error(c1, task.getException().getLocalizedMessage().toString()).show();
-                                }
-                            }
-                        });
-                    }
+//                    if (FirebaseAuth.getInstance().getCurrentUser() != null) {
+//
+//
+//                                if (fauth.getCurrentUser().isEmailVerified()) {
+//                                    Toasty.success(c1, "succes you have login");
+//                                    circularProgressIndicator.setVisibility(View.VISIBLE);
+//                                } else {
+//                                    fauth.getCurrentUser().sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
+//                                        @Override
+//                                        public void onComplete(@NonNull Task<Void> task) {
+//                                            if (task.isSuccessful()) {
+//                                                circularProgressIndicator.setVisibility(View.GONE);
+//                                                resendbutton.setVisibility(View.VISIBLE);
+//                                                Toasty.success(c1, "link sent to your email").show();
+//
+//                                            } else {
+//                                                circularProgressIndicator.setVisibility(View.GONE);
+//                                                Toasty.error(c1, task.getException().getMessage().toString()).show();
+//                                            }
+//                                        }
+//                                    });
+//                                }
+//
+//
+//
+//
+//                    } else {
+//                        circularProgressIndicator.setVisibility(View.GONE);
+//
+////                        fauth.signInWithEmailAndPassword(emailtxtfield.getText().toString(),
+////                                passwordtxtfield.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+////                            @Override
+////                            public void onComplete(@NonNull Task<AuthResult> task) {
+////                                if (task.isSuccessful()) {
+////
+////                                    currentuser = fauth.getCurrentUser();
+////
+////
+////                                    ///
+////                                    ///send verification
+////
+////
+////
+////
+////                                } else {
+////                                    circularProgressIndicator.setVisibility(View.GONE);
+////                                    Toasty.error(c1, task.getException().getLocalizedMessage().toString()).show();
+////                                }
+////                            }
+////                        });
+//                    }
 
                 }
             }

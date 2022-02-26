@@ -29,7 +29,7 @@ Context mycon;
 
         if(position==0)
         {
-            fragment =new SignUp();
+            fragment =new SignUp(mycon.getApplicationContext());
         }
 
         if(position==1)
