@@ -1,22 +1,21 @@
 package com.daily.image.pdf.imagetopdfconvert.fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-
-import android.os.Handler;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+
 import com.daily.image.pdf.imagetopdfconvert.R;
+import com.daily.image.pdf.imagetopdfconvert.activity.MainActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.progressindicator.CircularProgressIndicator;
@@ -24,10 +23,7 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseAuthSettings;
 import com.google.firebase.auth.FirebaseUser;
-
-import java.util.Locale;
 
 import es.dmoral.toasty.Toasty;
 
@@ -35,7 +31,7 @@ public class SignIn extends Fragment {
 
     FirebaseAuth fauth;
     Context c1;
-    TextView resendbutton,btnforgotpasword;
+    TextView resendbutton,btnforgotpasword,sendEmail,btnSignin;
     CircularProgressIndicator circularProgressIndicator;
     FirebaseUser currentuser;
     TextInputLayout emailnputlayout, passwordlayout;
@@ -68,7 +64,11 @@ public class SignIn extends Fragment {
         emailtxtfield = view.findViewById(R.id.emailtextfield);
         passwordtxtfield = view.findViewById(R.id.passwordtextfield);
         btnforgotpasword=view.findViewById(R.id.btnforgotpassword);
+        sendEmail = view.findViewById(R.id.send);
+        btnSignin = view.findViewById(R.id.btnsignin);
+
         fauth = FirebaseAuth.getInstance();
+
         btnforgotpasword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -117,21 +117,72 @@ public class SignIn extends Fragment {
             }
         });
 
-        view.findViewById(R.id.btnsignin).setOnClickListener(new View.OnClickListener() {
+        btnforgotpasword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                passwordtxtfield.setVisibility(view.GONE);
+                btnSignin.setVisibility(view.GONE);
+                btnforgotpasword.setVisibility(view.GONE);
+
+                sendEmail.setVisibility(view.VISIBLE);
+
+
+            }
+        });
+
+        sendEmail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                try {
+                    fauth.sendPasswordResetEmail(emailtxtfield.getText().toString()).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            try {
+                                if(task.isSuccessful())
+                                {
+                                    Toasty.success(c1,"email sent succesfully!!").show();
+
+                                    passwordtxtfield.setVisibility(view.VISIBLE);
+                                    btnSignin.setVisibility(view.VISIBLE);
+                                    btnforgotpasword.setVisibility(view.VISIBLE);
+
+                                    sendEmail.setVisibility(view.GONE);
+
+
+                                }else
+                                {
+                                    Toasty.error(c1,task.getException().getMessage()).show();
+
+                                }
+                            }catch (Exception e){
+                                Toasty.error(c1,e.getMessage()).show();
+
+                            }
+
+
+                        }
+                    });
+                } catch (Exception e) {
+                    Toasty.error(c1,e.getMessage()).show();
+                }
+
+            }
+        });
+
+        btnSignin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 //                fauth.getCurrentUser().reload();
 
-                if (emailtxtfield.getText().toString().isEmpty() || passwordtxtfield.getText().toString().isEmpty()) {
+                if (emailtxtfield.getText().toString().trim().isEmpty() || passwordtxtfield.getText().toString().trim().isEmpty()) {
                     Toasty.error(c1, "textfield is empty").show();
                 } else {
 
                     circularProgressIndicator.setVisibility(View.VISIBLE);
 
                     try {
-
-
-
 
                         fauth.signInWithEmailAndPassword(emailtxtfield.getText().toString(),passwordtxtfield.getText().toString()).addOnSuccessListener(
                                 new OnSuccessListener<AuthResult>() {
@@ -142,7 +193,9 @@ public class SignIn extends Fragment {
                                             if(authResult.getUser().isEmailVerified())
                                             {
                                                 circularProgressIndicator.setVisibility(View.GONE);
-
+                                                startActivity(new Intent(c1, MainActivity.class));
+//                                                c1.getAp
+                                                getActivity().finish();
                                                 Toasty.success(c1,"succes").show();
                                             }else{
                                                 try {
@@ -154,16 +207,14 @@ public class SignIn extends Fragment {
                                                                 Toasty.success(c1,"link has benn sent").show();
                                                             }else
                                                             {   circularProgressIndicator.setVisibility(View.GONE);
-                                                                Toasty.error(c1,"erorj4ijr").show();
+                                                                Toasty.error(c1,task.getException().getMessage()).show();
                                                             }
                                                         }
                                                     });
                                                 }catch (Exception e){
                                                     Toasty.error(c1,e.getMessage()).show();
                                                 }
-
                                             }
-
                                         }else
                                         {
                                             circularProgressIndicator.setVisibility(View.GONE);

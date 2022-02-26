@@ -56,10 +56,11 @@ public class SignUp extends Fragment {
             @Override
             public void onClick(View view) {
                 if(mauth!=null){
-                if(emailtext.getText().toString().isEmpty()||passwordtext.getText().toString().isEmpty())
+                if(emailtext.getText().toString().trim().isEmpty()||passwordtext.getText().toString().trim().isEmpty())
                 {
                     Toasty.error(context,"field is empty").show();
                 }else{
+                    cp.setVisibility(View.VISIBLE);
                     try {
 
                         mauth.createUserWithEmailAndPassword(emailtext.getText().toString(),passwordtext.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -67,9 +68,24 @@ public class SignUp extends Fragment {
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if(task.isSuccessful())
                                 {
+
+                                    task.getResult().getUser().sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            if(task.isSuccessful())
+                                            {
+                                                cp.setVisibility(View.GONE);
+                                                Toasty.success(context,"Please verify your link").show();
+                                            }else {
+                                                Toasty.error(context,task.getException().getMessage()).show();
+                                                cp.setVisibility(View.GONE);
+                                            }
+                                        }
+                                    });
                                     Toasty.success(context,"created").show();
                                 }else
-                                {
+                                {                                    cp.setVisibility(View.GONE);
+
                                     Toasty.error(context,task.getException().getLocalizedMessage()).show();
                                 }
                             }

@@ -11,85 +11,104 @@
     android:layout_width="wrap_content"
     android:gravity="center"
     android:layout_marginTop="@dimen/_80sdp"
-
-
     android:layout_height="wrap_content"/>
+
   <RelativeLayout
       android:layout_width="match_parent"
 android:layout_marginTop="@dimen/_50sdp"
       android:layout_height="match_parent">
-    <LinearLayout
-       android:layout_width="match_parent"
-      android:gravity="center_horizontal"
 
-       android:orientation="vertical"
-       android:layout_height="match_parent">
-        <com.google.android.material.textfield.TextInputEditText
-            android:hint="Enter Email"
-            android:layout_marginLeft="@dimen/_15sdp"
-            android:layout_marginRight="@dimen/_15sdp"
-            android:padding="@dimen/_10sdp"
-            android:id="@+id/emailtextfield"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/editview_back"/>
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:hint="Enter password"
-            android:layout_marginTop="@dimen/_15sdp"
-            android:layout_marginLeft="@dimen/_15sdp"
-            android:layout_marginRight="@dimen/_15sdp"
-            android:padding="@dimen/_10sdp"
-            android:id="@+id/passwordtextfield"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/editview_back"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/btnsignin"
-        android:clickable="true"
-        android:shadowColor="@color/colorPrimary"
-        android:shadowRadius="10.0"
-        android:shadowDx="5.0"
-        android:shadowDy="5.0"
-        android:elevation="@dimen/_5sdp"
-        android:layout_marginTop="@dimen/_15sdp"
-      android:paddingLeft="@dimen/_15sdp"
-        android:paddingRight="@dimen/_15sdp"
-        android:text="Sign in"
-        android:textSize="@dimen/_20sdp"
-        android:background="@drawable/btn_bg"/>
+          android:gravity="center_horizontal"
+          android:orientation="vertical">
 
-       <TextView
-           android:layout_width="wrap_content"
-           android:id="@+id/btnforgotpassword"
-           android:layout_marginTop="@dimen/_5sdp"
-           android:clickable="true"
-           android:textColorHighlight="@color/colorPrimary"
-           android:layout_height="wrap_content"
-           android:textColor="@color/black"
-           android:text="Forgot password?"/>
-        <com.google.android.material.progressindicator.CircularProgressIndicator
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/progress"
-            android:indeterminate="true"
-            android:visibility="gone"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:clickable="true"
-            android:layout_gravity="center"
-            android:paddingLeft="@dimen/_15sdp"
-            android:paddingRight="@dimen/_15sdp"
-            android:textSize="@dimen/_15sdp"
-            android:visibility="gone"
+          <com.google.android.material.textfield.TextInputEditText
+              android:id="@+id/emailtextfield"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginLeft="@dimen/_15sdp"
+              android:layout_marginRight="@dimen/_15sdp"
+              android:background="@drawable/editview_back"
+              android:hint="Enter Email"
+              android:padding="@dimen/_10sdp"
+              android:visibility="visible" />
 
-            android:background="@drawable/btn_bg"
-            android:text="Resend verification"
-            android:id="@+id/btnresend"/>
-   </LinearLayout>
+          <com.google.android.material.textfield.TextInputEditText
+              android:id="@+id/passwordtextfield"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginLeft="@dimen/_15sdp"
+              android:layout_marginTop="@dimen/_15sdp"
+              android:layout_marginRight="@dimen/_15sdp"
+              android:background="@drawable/editview_back"
+              android:hint="Enter password"
+              android:padding="@dimen/_10sdp"
+              android:visibility="visible" />
+
+          <TextView
+              android:id="@+id/btnsignin"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_marginTop="@dimen/_15sdp"
+              android:background="@drawable/btn_bg"
+              android:clickable="true"
+              android:elevation="@dimen/_5sdp"
+              android:paddingLeft="@dimen/_15sdp"
+              android:paddingRight="@dimen/_15sdp"
+              android:shadowColor="@color/colorPrimary"
+              android:shadowDx="5.0"
+              android:shadowDy="5.0"
+              android:shadowRadius="10.0"
+              android:text="Sign in"
+              android:textSize="@dimen/_20sdp" />
+
+          <TextView
+              android:id="@+id/btnforgotpassword"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_marginTop="@dimen/_5sdp"
+              android:clickable="true"
+              android:text="Forgot password?"
+              android:textColor="@color/black"
+              android:textColorHighlight="@color/colorPrimary" />
+
+          <com.google.android.material.progressindicator.CircularProgressIndicator
+              android:id="@+id/progress"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:indeterminate="true"
+              android:visibility="gone" />
+
+          <TextView
+              android:id="@+id/btnresend"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_gravity="center"
+              android:background="@drawable/btn_bg"
+              android:clickable="true"
+              android:paddingLeft="@dimen/_15sdp"
+              android:paddingRight="@dimen/_15sdp"
+              android:text="Resend verification"
+              android:textSize="@dimen/_15sdp"
+              android:visibility="gone" />
+
+          <TextView
+              android:id="@+id/send"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_marginTop="@dimen/_25sdp"
+              android:layout_gravity="center"
+              android:background="@drawable/btn_bg"
+              android:elevation="@dimen/_5sdp"
+              android:clickable="true"
+              android:padding="@dimen/_8sdp"
+              android:text="ForgetPassword"
+              android:textSize="@dimen/_15sdp"
+              android:visibility="gone" />
+
+      </LinearLayout>
   </RelativeLayout>
 </FrameLayout>

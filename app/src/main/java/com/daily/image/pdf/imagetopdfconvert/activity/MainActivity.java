@@ -32,6 +32,7 @@ import com.daily.image.pdf.imagetopdfconvert.base.BaseActivity;
 import com.daily.image.pdf.imagetopdfconvert.databinding.ActivityMainBinding;
 import com.daily.image.pdf.imagetopdfconvert.model.ImageFile;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -217,25 +218,29 @@ public class MainActivity extends BaseActivity {
 
                     case R.id.side_profile:
 //                        Toast.makeText(getApplicationContext(), "Profile is selecetd", Toast.LENGTH_LONG).show();
-                        startActivity(new Intent(getApplicationContext(),ProfileActivity.class));
+                        startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
                         drawerLayout.closeDrawer(Gravity.LEFT);
                         return true;
                     case R.id.side_logout:
-                        Toast.makeText(getApplicationContext(), "Log Out is selecetd", Toast.LENGTH_LONG).show();
+//                        Toast.makeText(getApplicationContext(), "Log Out is selecetd", Toast.LENGTH_LONG).show();
+                        FirebaseAuth.getInstance().signOut();
+                        startActivity(new Intent(getApplicationContext(), loginscreen.class))
+                        ;
+                        finish();
                         drawerLayout.closeDrawer(Gravity.LEFT);
                         return true;
 
                     case R.id.side_texttopdf:
-                        startActivity(new Intent(getApplicationContext(),Text_to_pdf_activity.class));
+                        startActivity(new Intent(getApplicationContext(), Text_to_pdf_activity.class));
                         drawerLayout.closeDrawer(Gravity.LEFT);
                         return true;
-
 
 
                     case R.id.side_linktopdf:
-                        startActivity(new Intent(getApplicationContext(),web_to_pdf.class));
+                        startActivity(new Intent(getApplicationContext(), web_to_pdf.class));
                         drawerLayout.closeDrawer(Gravity.LEFT);
                         return true;
+
                 }
                 return false;
             }
