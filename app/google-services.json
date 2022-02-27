@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "674489196190-pbalffmq9254nkkl2t5qcj6kb6tfs4an.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.daily.image.pdf.imagetopdfconvert",
+            "certificate_hash": "52e63ddf7fb2653838ade2a1bedc32558e2c3edc"
+          }
+        },
+        {
           "client_id": "674489196190-f4a9p3r7di7va4pplesumt3po9pomaco.apps.googleusercontent.com",
           "client_type": 3
         }

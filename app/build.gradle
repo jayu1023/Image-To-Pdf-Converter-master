@@ -66,7 +66,10 @@ dependencies {
         // Declare the dependency for the Firebase Authentication library
         // When using the BoM, you don't specify versions in Firebase library dependencies
         implementation 'com.google.firebase:firebase-auth'
-    
+
+
+    //Loading Package Is Here
+    implementation 'com.github.yash786agg:AnimatedLoadingIndicator:v1.3'
 
     // Round Image View
     implementation 'com.makeramen:roundedimageview:2.3.0'

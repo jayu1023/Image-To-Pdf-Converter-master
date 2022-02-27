@@ -1,15 +1,20 @@
 package com.daily.image.pdf.imagetopdfconvert.fragment;
 
+import android.app.Dialog;
 import android.content.Context;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,9 +32,10 @@ public class SignUp extends Fragment {
 
     FirebaseAuth mauth;
     CircularProgressIndicator cp;
-    TextView signup;
+    CardView signup;
     TextInputEditText emailtext,passwordtext;
     Context context;
+
 
 
     public SignUp(Context ce){
@@ -47,10 +53,11 @@ public class SignUp extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         cp=view.findViewById(R.id.progress);
-        signup=view.findViewById(R.id.btnsignup);
+      signup=view.findViewById(R.id.btnsignup);
         mauth=FirebaseAuth.getInstance();
         emailtext=view.findViewById(R.id.emailtxtfld);
         passwordtext=view.findViewById(R.id.passwordtxtfld);
+
 
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,9 +68,15 @@ public class SignUp extends Fragment {
                     Toasty.error(context,"field is empty").show();
                 }else{
                     cp.setVisibility(View.VISIBLE);
+
+
+                    /* Custom setting to change TextView text,Color and Text Size according to your Preference*/
+
+
+
                     try {
 
-                        mauth.createUserWithEmailAndPassword(emailtext.getText().toString(),passwordtext.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        mauth.createUserWithEmailAndPassword(emailtext.getText().toString().trim(),passwordtext.getText().toString().trim()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if(task.isSuccessful())
@@ -75,26 +88,33 @@ public class SignUp extends Fragment {
                                             if(task.isSuccessful())
                                             {
                                                 cp.setVisibility(View.GONE);
+                                                //progressDialog.dismiss();
                                                 Toasty.success(context,"Please verify your link").show();
                                             }else {
                                                 Toasty.error(context,task.getException().getMessage()).show();
-                                                cp.setVisibility(View.GONE);
+                                                 cp.setVisibility(View.GONE);
+                                                //progressDialog.dismiss();
                                             }
                                         }
                                     });
                                     Toasty.success(context,"created").show();
                                 }else
                                 {                                    cp.setVisibility(View.GONE);
+                                //progressDialog.dismiss();
 
                                     Toasty.error(context,task.getException().getLocalizedMessage()).show();
                                 }
                             }
                         });
                     }catch (Exception e){
+                        cp.setVisibility(View.GONE);
+                        //progressDialog.dismiss();
                         Toasty.error(context,e.getMessage()).show();
                     }
 
                 }}else{
+                    cp.setVisibility(View.GONE);
+                    //progressDialog.dismiss();
                     Toast.makeText(context, "errorrroroororr", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -103,6 +123,8 @@ public class SignUp extends Fragment {
 
 
     }
+
+
 }
 
 

@@ -77,7 +77,7 @@ public class SignIn extends Fragment {
                   Toasty.error(c1,"Your email is empty").show();
 
                 }else{
-                    fauth.sendPasswordResetEmail(emailtxtfield.getText().toString()).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    fauth.sendPasswordResetEmail(emailtxtfield.getText().toString().trim()).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             if(task.isSuccessful()){
@@ -136,7 +136,7 @@ public class SignIn extends Fragment {
             public void onClick(View view) {
 
                 try {
-                    fauth.sendPasswordResetEmail(emailtxtfield.getText().toString()).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    fauth.sendPasswordResetEmail(emailtxtfield.getText().toString().trim()).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             try {
@@ -184,7 +184,7 @@ public class SignIn extends Fragment {
 
                     try {
 
-                        fauth.signInWithEmailAndPassword(emailtxtfield.getText().toString(),passwordtxtfield.getText().toString()).addOnSuccessListener(
+                        fauth.signInWithEmailAndPassword(emailtxtfield.getText().toString().trim(),passwordtxtfield.getText().toString().trim()).addOnSuccessListener(
                                 new OnSuccessListener<AuthResult>() {
                                     @Override
                                     public void onSuccess(AuthResult authResult) {
@@ -212,7 +212,8 @@ public class SignIn extends Fragment {
                                                         }
                                                     });
                                                 }catch (Exception e){
-                                                    Toasty.error(c1,e.getMessage()).show();
+                                                    circularProgressIndicator.setVisibility(View.GONE);
+                                                    Toasty.error(c1,e.getMessage().toString()).show();
                                                 }
                                             }
                                         }else
@@ -225,6 +226,7 @@ public class SignIn extends Fragment {
                         );
 
                     }catch(Exception e){
+                        circularProgressIndicator.setVisibility(View.GONE);
                         Toasty.error(c1,e.getMessage()).show();
                     }
 

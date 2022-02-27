@@ -7,17 +7,33 @@
 
     android:layout_gravity="center_horizontal"
     tools:context=".fragment.SignUp">
+<ScrollView
+    android:layout_width="match_parent"
+    android:paddingLeft="@dimen/_5sdp"
+    android:paddingRight="@dimen/_5sdp"
+    android:layout_height="wrap_content">
 
     <LinearLayout
         android:orientation="vertical"
         android:gravity="center_horizontal"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/_40sdp"/>
+        <com.google.android.material.textfield.TextInputEditText
+            android:hint="Enter Your Password Again!!"
+            android:padding="@dimen/_10sdp"
+            android:id="@+id/Nametxtfield"
+            android:inputType="textPassword"
 
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/editview_back"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_20sdp"/>
         <com.google.android.material.textfield.TextInputEditText
             android:hint="Enter Email"
             android:padding="@dimen/_10sdp"
@@ -39,16 +55,54 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/editview_back"/>
-        <TextView
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_20sdp"/>
+        <com.google.android.material.textfield.TextInputEditText
+            android:hint="Enter Your Password Again"
+            android:padding="@dimen/_10sdp"
+            android:id="@+id/Repasswordtxtfld"
+            android:inputType="textPassword"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/editview_back"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_20sdp"/>
+        <com.google.android.material.textfield.TextInputEditText
+            android:hint="Enter Your Phone Number"
+            android:padding="@dimen/_10sdp"
+            android:id="@+id/phonenumbertxtfld"
+            android:inputType="textPassword"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/editview_back"/>
+        <androidx.cardview.widget.CardView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
           android:paddingRight="@dimen/_15sdp"
             android:id="@+id/btnsignup"
+            app:cardCornerRadius="@dimen/_25sdp"
            android:paddingLeft="@dimen/_15sdp"
             android:layout_marginTop="@dimen/_10sdp"
             android:background="@drawable/btn_bg"
-            android:textSize="@dimen/_20sdp"
-            android:text="Sign UP"/>
+
+           >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btn_bg"
+                android:paddingLeft="@dimen/_10sdp"
+                android:textSize="@dimen/_16sdp"
+                android:paddingTop="@dimen/_5sdp"
+                android:paddingRight="@dimen/_10sdp"
+                android:paddingBottom="@dimen/_5sdp"
+                android:textColor="@color/white"
+                android:text="Create Account"/>
+        </androidx.cardview.widget.CardView>
 <com.google.android.material.progressindicator.CircularProgressIndicator
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
@@ -57,5 +111,6 @@
 
     android:indeterminate="true"/>
     </LinearLayout>
+</ScrollView>
 
 </FrameLayout>
