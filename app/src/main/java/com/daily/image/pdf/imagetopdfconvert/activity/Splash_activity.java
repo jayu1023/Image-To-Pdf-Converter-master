@@ -9,6 +9,7 @@ import android.os.Handler;
 
 import com.daily.image.pdf.imagetopdfconvert.R;
 import com.daily.image.pdf.imagetopdfconvert.databinding.ActivitySplashBinding;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class Splash_activity extends AppCompatActivity {
 
@@ -26,8 +27,12 @@ public class Splash_activity extends AppCompatActivity {
             public void run() {
                 startActivity(
 
+                if (FirebaseAuth.getInstance().getCurrentUser() != null) {
+                    new Intent(getApplicationContext(), MainActivity.class));
+                } else {
+                    new Intent(getApplicationContext(), loginscreen.class));
+                }
 
-                        new Intent(getApplicationContext(), loginscreen.class));
                 finish();
 
             }
