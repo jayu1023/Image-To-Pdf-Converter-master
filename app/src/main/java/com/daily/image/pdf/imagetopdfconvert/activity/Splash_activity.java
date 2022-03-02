@@ -33,6 +33,7 @@ public class Splash_activity extends AppCompatActivity {
                     new Intent(getApplicationContext(), loginscreen.class));
                 }
 
+
                 finish();
 
             }
