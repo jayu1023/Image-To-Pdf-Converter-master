@@ -33,7 +33,7 @@ public class SignUp extends Fragment {
     FirebaseAuth mauth;
     CircularProgressIndicator cp;
     CardView signup;
-    TextInputEditText emailtext,passwordtext;
+    TextInputEditText emailtext,passwordtext,nameText,rePasswordText,phoneText;
     Context context;
 
 
@@ -57,65 +57,73 @@ public class SignUp extends Fragment {
         mauth=FirebaseAuth.getInstance();
         emailtext=view.findViewById(R.id.emailtxtfld);
         passwordtext=view.findViewById(R.id.passwordtxtfld);
+        rePasswordText=view.findViewById(R.id.Repasswordtxtfld);
+        nameText=view.findViewById(R.id.nametxtfield);
+        phoneText=view.findViewById(R.id.phonenumbertxtfld);
 
 
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(mauth!=null){
-                if(emailtext.getText().toString().trim().isEmpty()||passwordtext.getText().toString().trim().isEmpty())
-                {
-                    Toasty.error(context,"field is empty").show();
-                }else{
-                    cp.setVisibility(View.VISIBLE);
+                if(mauth!=null) {
+                    if (emailtext.getText().toString().trim().isEmpty() || passwordtext.getText().toString().trim().isEmpty() || nameText.getText().toString().trim().isEmpty()
+                            || rePasswordText.getText().toString().trim().isEmpty() || phoneText.getText().toString().trim().isEmpty()
+                    ) {
+                        Toasty.error(context, "field is empty").show();
+                    } else {
+
+                        if (passwordtext.getText().toString().trim().equalsIgnoreCase(rePasswordText.getText().toString().trim())) {
 
 
-                    /* Custom setting to change TextView text,Color and Text Size according to your Preference*/
+                        cp.setVisibility(View.VISIBLE);
 
 
+                        /* Custom setting to change TextView text,Color and Text Size according to your Preference*/
 
-                    try {
 
-                        mauth.createUserWithEmailAndPassword(emailtext.getText().toString().trim(),passwordtext.getText().toString().trim()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                if(task.isSuccessful())
-                                {
+                        try {
 
-                                    task.getResult().getUser().sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
-                                        @Override
-                                        public void onComplete(@NonNull Task<Void> task) {
-                                            if(task.isSuccessful())
-                                            {
-                                                cp.setVisibility(View.GONE);
-                                                //progressDialog.dismiss();
-                                                Toasty.success(context,"Please verify your link").show();
-                                            }else {
-                                                Toasty.error(context,task.getException().getMessage()).show();
-                                                 cp.setVisibility(View.GONE);
-                                                //progressDialog.dismiss();
+                            mauth.createUserWithEmailAndPassword(emailtext.getText().toString().trim(), passwordtext.getText().toString().trim()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                    if (task.isSuccessful()) {
+
+                                        task.getResult().getUser().sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<Void> task) {
+                                                if (task.isSuccessful()) {
+                                                    cp.setVisibility(View.GONE);
+                                                    //progressDialog.dismiss();
+                                                    Toasty.success(context, "Please verify your link").show();
+                                                } else {
+                                                    Toasty.error(context, task.getException().getMessage()).show();
+                                                    cp.setVisibility(View.GONE);
+                                                    //progressDialog.dismiss();
+                                                }
                                             }
-                                        }
-                                    });
-                                    Toasty.success(context,"created").show();
-                                }else
-                                {                                    cp.setVisibility(View.GONE);
-                                //progressDialog.dismiss();
+                                        });
+                                        Toasty.success(context, "created").show();
+                                    } else {
+                                        cp.setVisibility(View.GONE);
+                                        //progressDialog.dismiss();
 
-                                    Toasty.error(context,task.getException().getLocalizedMessage()).show();
+                                        Toasty.error(context, task.getException().getLocalizedMessage()).show();
+                                    }
                                 }
-                            }
-                        });
-                    }catch (Exception e){
-                        cp.setVisibility(View.GONE);
-                        //progressDialog.dismiss();
-                        Toasty.error(context,e.getMessage()).show();
-                    }
+                            });
+                        } catch (Exception e) {
+                            cp.setVisibility(View.GONE);
+                            //progressDialog.dismiss();
+                            Toasty.error(context, e.getMessage()).show();
+                        }
 
-                }}else{
+                    }
+                }
+
+                }else{
                     cp.setVisibility(View.GONE);
                     //progressDialog.dismiss();
-                    Toast.makeText(context, "errorrroroororr", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "Auth is Nulll", Toast.LENGTH_SHORT).show();
                 }
             }
         });

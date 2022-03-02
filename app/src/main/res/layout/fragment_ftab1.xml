@@ -22,9 +22,9 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/_40sdp"/>
         <com.google.android.material.textfield.TextInputEditText
-            android:hint="Enter Your Password Again!!"
+            android:hint="Enter Your Name"
             android:padding="@dimen/_10sdp"
-            android:id="@+id/Nametxtfield"
+            android:id="@+id/nametxtfield"
             android:inputType="textPassword"
 
             android:layout_width="match_parent"
