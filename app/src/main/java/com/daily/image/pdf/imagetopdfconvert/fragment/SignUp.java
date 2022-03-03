@@ -11,6 +11,7 @@ import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,11 +21,19 @@ import android.widget.Toast;
 
 import com.daily.image.pdf.imagetopdfconvert.R;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.progressindicator.CircularProgressIndicator;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import es.dmoral.toasty.Toasty;
 
@@ -33,14 +42,16 @@ public class SignUp extends Fragment {
     FirebaseAuth mauth;
     CircularProgressIndicator cp;
     CardView signup;
-    TextInputEditText emailtext,passwordtext,nameText,rePasswordText,phoneText;
+    FirebaseFirestore db ;
+    ArrayList<String> list;
+    TextInputEditText emailtext, passwordtext, nameText, rePasswordText, phoneText;
     Context context;
 
 
-
-    public SignUp(Context ce){
-        this.context=ce;
+    public SignUp(Context ce) {
+        this.context = ce;
     }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -52,20 +63,21 @@ public class SignUp extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        cp=view.findViewById(R.id.progress);
-      signup=view.findViewById(R.id.btnsignup);
-        mauth=FirebaseAuth.getInstance();
-        emailtext=view.findViewById(R.id.emailtxtfld);
-        passwordtext=view.findViewById(R.id.passwordtxtfld);
-        rePasswordText=view.findViewById(R.id.Repasswordtxtfld);
-        nameText=view.findViewById(R.id.nametxtfield);
-        phoneText=view.findViewById(R.id.phonenumbertxtfld);
-
+        cp = view.findViewById(R.id.progress);
+        signup = view.findViewById(R.id.btnsignup);
+        mauth = FirebaseAuth.getInstance();
+        list=new ArrayList<>();
+        emailtext = view.findViewById(R.id.emailtxtfld);
+        passwordtext = view.findViewById(R.id.passwordtxtfld);
+        rePasswordText = view.findViewById(R.id.Repasswordtxtfld);
+        nameText = view.findViewById(R.id.nametxtfield);
+        phoneText = view.findViewById(R.id.phonenumbertxtfld);
+db= FirebaseFirestore.getInstance();
 
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(mauth!=null) {
+                if (mauth != null) {
                     if (emailtext.getText().toString().trim().isEmpty() || passwordtext.getText().toString().trim().isEmpty() || nameText.getText().toString().trim().isEmpty()
                             || rePasswordText.getText().toString().trim().isEmpty() || phoneText.getText().toString().trim().isEmpty()
                     ) {
@@ -75,59 +87,78 @@ public class SignUp extends Fragment {
                         if (passwordtext.getText().toString().trim().equalsIgnoreCase(rePasswordText.getText().toString().trim())) {
 
 
-                        cp.setVisibility(View.VISIBLE);
+                            cp.setVisibility(View.VISIBLE);
 
 
-                        /* Custom setting to change TextView text,Color and Text Size according to your Preference*/
+                            /* Custom setting to change TextView text,Color and Text Size according to your Preference*/
 
 
-                        try {
+                            try {
 
-                            mauth.createUserWithEmailAndPassword(emailtext.getText().toString().trim(), passwordtext.getText().toString().trim()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                                @Override
-                                public void onComplete(@NonNull Task<AuthResult> task) {
-                                    if (task.isSuccessful()) {
+                                mauth.createUserWithEmailAndPassword(emailtext.getText().toString().trim(), passwordtext.getText().toString().trim()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<AuthResult> task) {
+                                        if (task.isSuccessful()) {
 
-                                        task.getResult().getUser().sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
-                                            @Override
-                                            public void onComplete(@NonNull Task<Void> task) {
-                                                if (task.isSuccessful()) {
-                                                    cp.setVisibility(View.GONE);
-                                                    //progressDialog.dismiss();
-                                                    Toasty.success(context, "Please verify your link").show();
-                                                } else {
-                                                    Toasty.error(context, task.getException().getMessage()).show();
-                                                    cp.setVisibility(View.GONE);
-                                                    //progressDialog.dismiss();
+                                            task.getResult().getUser().sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                @Override
+                                                public void onComplete(@NonNull Task<Void> task) {
+                                                    if (task.isSuccessful()) {
+                                                        cp.setVisibility(View.GONE);
+                                                        //progressDialog.dismiss();
+                                                        Map<String, Object> user = new HashMap<>();
+                                                        user.put("name", "Ada");
+                                                        user.put("email", "Lovelace");
+                                                        user.put("phonenumber", 1815);
+                                                        user.put("cart",list );
+
+                                                        db.collection("users")
+                                                                .add(user)
+                                                                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                                                                    @Override
+                                                                    public void onSuccess(DocumentReference documentReference) {
+                                                                        Log.d("mytag", "DocumentSnapshot added with ID: " + documentReference.getId());
+                                                                    }
+                                                                })
+                                                                .addOnFailureListener(new OnFailureListener() {
+                                                                    @Override
+                                                                    public void onFailure(@NonNull Exception e) {
+                                                                        Log.w("mytag", "Error adding document", e);
+                                                                    }
+                                                                });
+                                                        Toasty.success(context, "Please verify your link").show();
+                                                    } else {
+                                                        Toasty.error(context, task.getException().getMessage()).show();
+                                                        cp.setVisibility(View.GONE);
+                                                        //progressDialog.dismiss();
+                                                    }
                                                 }
-                                            }
-                                        });
-                                        Toasty.success(context, "created").show();
-                                    } else {
-                                        cp.setVisibility(View.GONE);
-                                        //progressDialog.dismiss();
+                                            });
+                                            Toasty.success(context, "created").show();
+                                        } else {
+                                            cp.setVisibility(View.GONE);
+                                            //progressDialog.dismiss();
 
-                                        Toasty.error(context, task.getException().getLocalizedMessage()).show();
+                                            Toasty.error(context, task.getException().getLocalizedMessage()).show();
+                                        }
                                     }
-                                }
-                            });
-                        } catch (Exception e) {
-                            cp.setVisibility(View.GONE);
-                            //progressDialog.dismiss();
-                            Toasty.error(context, e.getMessage()).show();
+                                });
+                            } catch (Exception e) {
+                                cp.setVisibility(View.GONE);
+                                //progressDialog.dismiss();
+                                Toasty.error(context, e.getMessage()).show();
+                            }
+
                         }
-
                     }
-                }
 
-                }else{
+                } else {
                     cp.setVisibility(View.GONE);
                     //progressDialog.dismiss();
                     Toast.makeText(context, "Auth is Nulll", Toast.LENGTH_SHORT).show();
                 }
             }
         });
-
 
 
     }
