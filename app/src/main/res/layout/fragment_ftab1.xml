@@ -25,7 +25,7 @@
             android:hint="Enter Your Name"
             android:padding="@dimen/_10sdp"
             android:id="@+id/nametxtfield"
-            android:inputType="textPassword"
+
 
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -37,6 +37,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:hint="Enter Email"
             android:padding="@dimen/_10sdp"
+            android:inputType="textEmailAddress"
             android:id="@+id/emailtxtfld"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -75,7 +76,7 @@
             android:hint="Enter Your Phone Number"
             android:padding="@dimen/_10sdp"
             android:id="@+id/phonenumbertxtfld"
-            android:inputType="textPassword"
+           android:inputType="phone"
 
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
