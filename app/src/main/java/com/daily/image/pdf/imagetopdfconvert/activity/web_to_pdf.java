@@ -230,6 +230,7 @@ public class web_to_pdf extends AppCompatActivity {
         printJob = printManager.print(jobName, printAdapter,
 
                 new PrintAttributes.Builder().build());
+        System.out.print("=======>>>>"+ printJob.getInfo());
 
 
     }
