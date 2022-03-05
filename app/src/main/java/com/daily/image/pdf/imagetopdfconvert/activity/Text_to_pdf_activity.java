@@ -29,6 +29,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
@@ -40,7 +41,14 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import com.daily.image.pdf.imagetopdfconvert.Constant.Util;
 import com.daily.image.pdf.imagetopdfconvert.R;
 import com.daily.image.pdf.imagetopdfconvert.databinding.ActivityTextToPdf2Binding;
+import com.google.android.gms.auth.api.signin.internal.Storage;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.switchmaterial.SwitchMaterial;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.PageSize;
@@ -436,7 +444,7 @@ public class Text_to_pdf_activity extends AppCompatActivity  {
             binidng.llprocess.setVisibility(View.GONE);
             binidng.llFinal.setVisibility(View.VISIBLE);
 
-            uploadpdf();
+            uploadpdf(file);
 
             //binidng.maincode.setVisibility(View.VISIBLE);
             runOnUiThread(() -> {
@@ -508,7 +516,17 @@ public class Text_to_pdf_activity extends AppCompatActivity  {
             });
         }
 
-       private void uploadpdf() {
+       private void uploadpdf(File file) {
+           StorageReference storageRef = FirebaseStorage.getInstance().getReference("Documents/"+ FirebaseAuth.getInstance().getCurrentUser().getUid()+"/pdfdocument.pdf");
+
+
+           storageRef.putFile(Uri.fromFile(file)).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
+               @Override
+               public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
+
+               }
+           });
+
 
        }
 
