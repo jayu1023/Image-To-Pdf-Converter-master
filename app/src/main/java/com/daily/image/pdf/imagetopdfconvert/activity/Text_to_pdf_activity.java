@@ -2,6 +2,13 @@ package com.daily.image.pdf.imagetopdfconvert.activity;
 
 import static android.os.Build.VERSION.SDK_INT;
 
+
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Transport;
+
+
 import android.app.Dialog;
 import android.content.ContextWrapper;
 import android.content.Intent;
@@ -11,6 +18,7 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.se.omapi.Session;
 import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -43,6 +51,7 @@ import com.theartofdev.edmodo.cropper.BuildConfig;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
+import java.util.Properties;
 
 import es.dmoral.toasty.Toasty;
 
@@ -426,6 +435,9 @@ public class Text_to_pdf_activity extends AppCompatActivity  {
 
             binidng.llprocess.setVisibility(View.GONE);
             binidng.llFinal.setVisibility(View.VISIBLE);
+
+            uploadpdf();
+
             //binidng.maincode.setVisibility(View.VISIBLE);
             runOnUiThread(() -> {
                 Log.e("LLL_File: ", String.valueOf(file.exists()));
@@ -437,6 +449,7 @@ public class Text_to_pdf_activity extends AppCompatActivity  {
                 sb.append(", ");
                 sb.append(Util.convertTimeDateModified(file.lastModified()));
                 binidng.tvSizeDate.setText(sb.toString());
+                sendemail();
                 isconversinoisrunning=false;
                 binidng.llOpenWith.setOnClickListener(v -> {
                     try
@@ -494,7 +507,20 @@ public class Text_to_pdf_activity extends AppCompatActivity  {
                 });
             });
         }
-    }
+
+       private void uploadpdf() {
+
+       }
+
+       private void sendemail() {
+           Properties properties= new Properties();
+           properties.put("mail.smtp.auth",true);
+           properties.put("mail.smtp.starttls.enable","true");
+           properties.put("mail.smtp.host","smtp.gmail.com");
+           properties.put("mail.smtp.port","587");
+//           Session session= Session.getInstance();
+       }
+   }
 }
 
 
