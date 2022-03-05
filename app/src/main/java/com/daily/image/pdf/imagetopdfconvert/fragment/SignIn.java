@@ -190,32 +190,36 @@ public class SignIn extends Fragment {
                                     public void onSuccess(AuthResult authResult) {
                                         if(authResult.getUser()!=null)
                                         {
-                                            if(authResult.getUser().isEmailVerified())
-                                            {
-                                                circularProgressIndicator.setVisibility(View.GONE);
-                                                startActivity(new Intent(c1, MainActivity.class));
+                                            circularProgressIndicator.setVisibility(View.GONE);
+                                            startActivity(new Intent(c1, MainActivity.class));
 //                                                c1.getAp
-                                                getActivity().finish();
-                                                Toasty.success(c1,"succes").show();
-                                            }else{
-                                                try {
-                                                    authResult.getUser().sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
-                                                        @Override
-                                                        public void onComplete(@NonNull Task<Void> task) {
-                                                            if(task.isSuccessful())
-                                                            {   circularProgressIndicator.setVisibility(View.GONE);
-                                                                Toasty.success(c1,"link has benn sent").show();
-                                                            }else
-                                                            {   circularProgressIndicator.setVisibility(View.GONE);
-                                                                Toasty.error(c1,task.getException().getMessage()).show();
-                                                            }
-                                                        }
-                                                    });
-                                                }catch (Exception e){
-                                                    circularProgressIndicator.setVisibility(View.GONE);
-                                                    Toasty.error(c1,e.getMessage().toString()).show();
-                                                }
-                                            }
+                                            getActivity().finish();
+//                                            if(authResult.getUser().isEmailVerified())
+//                                            {
+//                                                circularProgressIndicator.setVisibility(View.GONE);
+//                                                startActivity(new Intent(c1, MainActivity.class));
+////                                                c1.getAp
+//                                                getActivity().finish();
+//                                                Toasty.success(c1,"succes").show();
+//                                            }else{
+//                                                try {
+//                                                    authResult.getUser().sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
+//                                                        @Override
+//                                                        public void onComplete(@NonNull Task<Void> task) {
+//                                                            if(task.isSuccessful())
+//                                                            {   circularProgressIndicator.setVisibility(View.GONE);
+//                                                                Toasty.success(c1,"link has benn sent").show();
+//                                                            }else
+//                                                            {   circularProgressIndicator.setVisibility(View.GONE);
+//                                                                Toasty.error(c1,task.getException().getMessage()).show();
+//                                                            }
+//                                                        }
+//                                                    });
+//                                                }catch (Exception e){
+//                                                    circularProgressIndicator.setVisibility(View.GONE);
+//                                                    Toasty.error(c1,e.getMessage().toString()).show();
+//                                                }
+//                                            }
                                         }else
                                         {
                                             circularProgressIndicator.setVisibility(View.GONE);
